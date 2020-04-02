@@ -1,0 +1,262 @@
+/* ABSTRACT AND GENERAL SETTINGS */
+:root {
+  --lighter-gradient: hsl(236, 72%, 79%);
+  --darker-gradient: hsl(237, 63%, 64%);
+  --lighter-grayish-blue: hsl(240, 67%, 98%);
+  --light-grayish-blue: rgb(179, 181, 197);
+  --grayish-blue: hsl(233, 13%, 49%);
+  --dark-grayish-blue: hsl(232, 13%, 33%);
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--lighter-grayish-blue);
+  background-image: url(img/bg-bottom.svg), url(img/bg-top.svg);
+  background-repeat: no-repeat;
+  background-position: left bottom, top right;
+  min-height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 80%;
+  width: 100rem;
+  margin: 7rem auto;
+}
+.container h1 {
+  font-size: 3.5rem;
+  color: var(--grayish-blue);
+  text-transform: capitalize;
+  margin-bottom: 3.5rem;
+}
+/* CARDS-BOX,CARD AND CTA BUTTON */
+.cards-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(325px, 1fr));
+  margin-top: 6rem;
+  align-items: center;
+}
+
+.card {
+  background-color: white;
+  padding: 2.5rem;
+  font-size: 1.5rem;
+  height: fit-content;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem 0.5px rgba(179, 181, 197, 0.2);
+  position: relative;
+  z-index: 1;
+}
+.card h3 {
+  color: var(--grayish-blue);
+  font-size: 2rem;
+}
+.card ul {
+  list-style: none;
+  color: var(--dark-grayish-blue);
+}
+.card ul li {
+  border-bottom: 0.2px solid var(--light-grayish-blue);
+  padding: 1.5rem 0;
+}
+.card ul li:nth-of-type(2) {
+  border-top: 0.2px solid transparent;
+}
+.card ul li > span.dollar {
+  font-size: 3.3rem;
+  margin-right: 1rem;
+}
+.card:nth-of-type(2) {
+  background-image: linear-gradient(
+    135deg,
+    var(--lighter-gradient),
+    var(--darker-gradient)
+  );
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  box-shadow: none;
+  z-index: 2;
+}
+.card:nth-of-type(2) > * {
+  color: white;
+}
+.card:nth-of-type(2) > .cta {
+  background-image: none;
+  color: var(--darker-gradient);
+  background-color: white;
+}
+.card:nth-of-type(2) > .cta:hover,
+.card:nth-of-type(2) > .cta:focus {
+  border: transparent 0.5px solid;
+  background-image: linear-gradient(
+    to right,
+    var(--lighter-gradient),
+    var(--darker-gradient)
+  );
+  color: white;
+}
+
+.cta {
+  text-transform: uppercase;
+  text-decoration: none;
+  border: transparent 0.5px solid;
+  background-image: linear-gradient(
+    to right,
+    var(--lighter-gradient),
+    var(--darker-gradient)
+  );
+  color: white;
+  display: block;
+  padding: 1rem 5rem;
+  margin-top: 3rem;
+  border-radius: 0.6rem;
+  transition: 0.3s ease-in-out;
+}
+.cta:focus,
+.cta:hover {
+  border: var(--dark-grayish-blue) 0.5px solid;
+  background-image: none;
+  color: var(--darker-gradient);
+  background-color: white;
+  cursor: pointer;
+}
+/* RESPONSIVENESS FOR ALL SCREENS */
+@media only screen and (max-width: 1215px) {
+  html {
+    font-size: 50%;
+  }
+  .container {
+    min-width: 80%;
+    width: 40rem;
+  }
+  .cards-box {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 915px) {
+  .container {
+    min-width: 100%;
+  }
+  .cards-box {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 320px) {
+  body {
+    background-image: url(images/bg-top.svg);
+    background-position: center right;
+    overflow: visible;
+  }
+  .cards-box {
+    grid-template-columns: none;
+    grid-gap: 20px 0;
+    max-width: 50rem;
+    width: 35rem;
+    margin: 5rem auto 0;
+  }
+  .cards-box > *:nth-of-type(2) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    box-shadow: 0 0 2rem 0.5px rgba(179, 181, 197, 0.2);
+  }
+}
+
+/* TOGGLE BUTTON AND ALL THE FUNCTIONALITY WITH CSS */
+.checkbox-btn {
+  display: none;
+}
+
+.period {
+  color: var(--light-grayish-blue);
+  margin: 3.5rem 0;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+label.toggle-btn {
+  margin: 0 4rem;
+  border-radius: 5rem;
+  width: 60px;
+  height: 33px;
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    var(--lighter-gradient),
+    var(--darker-gradient)
+  );
+  position: relative;
+  top: 10px;
+  transition: 0.2s ease;
+}
+label.toggle-btn:hover,
+label.toggle-btn:focus {
+  cursor: pointer;
+  opacity: 0.5;
+}
+label.toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+}
+
+.price {
+  font-size: 7rem;
+  padding-bottom: 2rem;
+  margin: 2rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  visibility: visible;
+}
+.price::before {
+  content: '';
+  position: absolute;
+  top: 2.2rem;
+  left: 6rem;
+  font-size: 5.5rem;
+  visibility: hidden;
+}
+
+.price::before {
+  content: attr(data-anual);
+}
+
+.checkbox-btn:checked + .toggle-btn::before {
+  left: 17px;
+}
+
+.checkbox-btn:checked ~ .cards-box > .card > ul > .price {
+  visibility: hidden;
+}
+
+.checkbox-btn:checked ~ .cards-box > .card > ul > .price::before,
+.dollar {
+  visibility: visible;
+}
+
+.checkbox-btn:checked ~ .cards-box > .card > ul > li:nth-of-type(2) {
+  border-top: 0.2px solid var(--light-grayish-blue);
+}

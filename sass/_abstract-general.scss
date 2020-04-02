@@ -1,0 +1,45 @@
+// ABSTRACT AND GENERAL SETTINGS
+:root {
+  // primary gradient colors
+  --lighter-gradient: hsl(236, 72%, 79%);
+  --darker-gradient: hsl(237, 63%, 64%);
+  // neutral
+  --lighter-grayish-blue: hsl(240, 67%, 98%);
+  --light-grayish-blue: rgb(179, 181, 197);
+  --grayish-blue: hsl(233, 13%, 49%);
+  --dark-grayish-blue: hsl(232, 13%, 33%);
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--lighter-grayish-blue);
+  background-image: url(img/bg-bottom.svg), url(img/bg-top.svg);
+  background-repeat: no-repeat;
+  background-position: left bottom, top right;
+  min-height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+.container {
+  max-width: 80%;
+  width: 100rem;
+  margin: 7rem auto;
+
+  h1 {
+    font-size: 3.5rem;
+    color: var(--grayish-blue);
+    text-transform: capitalize;
+    margin-bottom: 3.5rem;
+  }
+}
